@@ -84,10 +84,10 @@
                             <?php $counter++; ?> 
 			    <a href="/map?x={{ $coord->y }}&y={{ $coord->x }}&range={{ $range }}">
                             @if($coord->image != '')
-                                <img src="{{ '/images/' . $coord->image }}" data-toggle="tooltip" data-placement="bottom" data-html="true"
+                                <img src="{{ '/images/' . $coord->image }}" class="img-fluid" data-toggle="tooltip" data-placement="bottom" data-html="true"
                                     title="{{ $coord->y }},{{ $coord->x }} @if(!empty($coord->info)) <br>Additional Info:<br/>{{ $coord->info }} @endif">
                             @else
-                                <img src="/images/unknown.gif" data-toggle="tooltip" data-placement="bottom" title="{{ $coord->y }},{{ $coord->x }}">
+                                <img src="/images/unknown.gif" class="img-fluid" data-toggle="tooltip" data-placement="bottom" title="{{ $coord->y }},{{ $coord->x }}">
                             @endif
                             @if($counter === ($range * 2) + 1)
                                 <br />
