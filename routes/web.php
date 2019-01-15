@@ -40,8 +40,8 @@ Route::post('upload', function (Request $request) {
 
 // Display the map
 Route::get('map', function (Request $request) {
-  if(!isset($request->x)) { $request->x = 281; }
-  if(!isset($request->y)) { $request->y = 196; }
+  if(!isset($request->x)) { $request->x = 200; }
+  if(!isset($request->y)) { $request->y = 200; }
   if(!isset($request->range)) { $request->range = 10; }
   if($request->range >= 12) { $request->range = 12; }
   $coords = DB::table('map')
