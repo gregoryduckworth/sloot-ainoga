@@ -1,112 +1,53 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('standard')
 
-        <title>Agonia Map</title>
+@section('title', 'Upload')
 
-        <!-- Fonts -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            <div class="row content">
-                <div class="col-md-4">
-                    Paste this script into your browser console to get the correct details (it will automatically be copied to your clipboard):<br />
-                    <i>Please note, you have to be on the 'Look Around' page for this to work</i>
-                    <div style="background: #D3D3D3; font-size: 0.9em;">
-                        var table = $('div.background > table'); 
-                        var map = '';
-                        for(var i = 0, row; row = table.rows[i]; i++) {
-                            for(var j = 0, cell; cell = row.cells[j]; j++) {
-                                if(table.rows[0].cells[j].innerHTML === '&amp;nbsp;') { } else {
-                                    if(table.rows[i].cells[0].innerHTML === '&amp;nbsp;') { } else {
-                                        map += table.rows[i].cells[0].innerHTML + ',' + table.rows[0].cells[j].innerHTML + ',' + cell.style.background.replace('url("//','https://').replace('")','') + '\n';
-                                    }
+@section('content')
+    <div class="col-md-6 col-sm-12 mx-auto mh-100" style="padding-top: 20px;">
+        <div class="card bg-light">
+            <div class="card-header">
+                <p class="text-center">
+                    Paste this script into your browser console to get the correct details:<br />
+                    <small><i>Please note, you have to be on the 'Look Around' page for this to work</i></small>
+                </p>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-monospace">
+                    var table = $('div.background > table');
+                    var map = '';
+                    for(var i = 0, row; row = table.rows[i]; i++) {
+                        for(var j = 0, cell; cell = row.cells[j]; j++) {
+                            if(table.rows[0].cells[j].innerHTML === '&amp;nbsp;') { } else {
+                                if(table.rows[i].cells[0].innerHTML === '&amp;nbsp;') { } else {
+                                    map += table.rows[i].cells[0].innerHTML + ','
+                                        + table.rows[0].cells[j].innerHTML + ','
+                                        + cell.style.background.replace('url("//','https://').replace('")','')
+                                        + '\n';
                                 }
-                            } 
+                            }
                         }
-                        console.log(map);
-                        copy(map);
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <form action="upload" method="POST">
-                        @csrf
-                        <div class="form-group">
-                          <textarea name="map" rows="20" cols="100"></textarea><br />
-                        </div>
-                        @if(isset($error))
-                        <div class="alert alert-danger">{{ $error }}</div>
-                        @endif
-                        @if(isset($success))
-                            <div class="alert alert-success">{{ $success }}</div>
-                        @endif
-                        <input type="submit" value="Submit">
-                    </form>
-                    <hr>
-                    <a href="/">Back to the Main Page</a><hr>
-                </div>
+                    }
+                    console.log(map);
+                    copy(map);
+                </p>
             </div>
         </div>
-    </body>
-</html>
-
+    </div>
+    <div class="col-md-6 col-sm-12 mx-auto mh-100" style="padding-top: 20px;">
+        <form action="upload" method="POST">
+            @csrf
+            <div class="form-group row">
+                <textarea class="form-control"  name="map" rows="20" cols="100"></textarea>
+            </div>
+            @if(isset($error))
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endif
+            @if(isset($success))
+                <div class="alert alert-success">{{ $success }}</div>
+            @endif
+            <div class="form-group row">
+                <input class="mx-auto btn btn-secondary" type="submit">
+            </div>
+        </form>
+    </div>
+@endsection
