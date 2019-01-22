@@ -22,7 +22,7 @@
                     <img src="{{ '/images/' . $coord->image }}" class="img-fluid" style="margin-top:-4px; margin-left: -1px;" data-toggle="tooltip" data-placement="bottom" data-html="true"
                         title="{{ $coord->y }},{{ $coord->x }} @if(!empty($coord->info)) <br>Additional Info:<br/>{{ $coord->info }} @endif">
                 @else
-                    <img src="/images/unknown.gif" class="img-fluid" data-toggle="tooltip" data-placement="bottom" title="{{ $coord->y }},{{ $coord->x }}">
+                    <img src="/images/unknown.gif" class="img-fluid" style="margin-top:-4px; margin-left: -1px;" data-toggle="tooltip" data-placement="bottom" title="{{ $coord->y }},{{ $coord->x }}">
                 @endif
                 @if($counter === ($range * 2) + 1)
                     <br />
@@ -47,7 +47,7 @@
             <br />
             <div class="form-group row">
                 <label for="range" class="d-none d-lg-block">Range (max 12)</label>
-                <input id="range" class="form-control" placeholder="Range" type="text" name="range">
+                <input id="range" class="form-control" placeholder="Range" type="text" name="range" value="{{ app('request')->input('range') }}">
             </div>
             <br />
             <div class="form-group row">

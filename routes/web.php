@@ -26,6 +26,7 @@ Route::get('upload', function () {
 
 // Send any updates to the map
 Route::post('upload', function (Request $request) {
+    if (empty($request->input('map'))) {return view('upload')->withError('No data to upload');}
     $coords = preg_split('/\r\n|\r|\n/', $request->input('map'));
     foreach ($coords as $coord) {
         $entry = explode(',', $coord);
@@ -55,39 +56,46 @@ Route::get('map', function (Request $request) {
     ]);
 });
 
-Route::get('update-info', function () {
-    return view('update');
-});
+Route::prefix('admin')->group(function () {
 
-Route::post('update-info', function (Request $request) {
-    DB::table('map')->where('x', $request->x)->where('y', $request->y)
-        ->update([
-            'info' => $request->info,
-        ]);
-    return view('update')->withSuccess('Information has been updated at ' . $request->x . ',' . $request->y);
-});
+    Route::get('/', function () {
+        return view('admin');
+    });
 
-// Get image tiles from the server
-Route::get('update-images', function () {
-    for ($i = 0; $i < 1824; $i++) {
-        $path = 'https://static.agonialands.com/assets/map/' . $i . '.gif';
-        $filename = basename($path);
-        // Only download if we don't already have the image
-        if (!file_exists(public_path('images/' . $filename))) {
-            Image::make($path)->save(public_path('images/' . $filename));
+    Route::get('update-info', function () {
+        return view('update');
+    });
+
+    Route::post('update-info', function (Request $request) {
+        DB::table('map')->where('x', $request->x)->where('y', $request->y)
+            ->update([
+                'info' => $request->info,
+            ]);
+        return view('update')->withSuccess('Information has been updated at ' . $request->x . ',' . $request->y);
+    });
+
+    // Get image tiles from the server
+    Route::get('update-images', function () {
+        for ($i = 0; $i < 1824; $i++) {
+            $path = 'https://static.agonialands.com/assets/map/' . $i . '.gif';
+            $filename = basename($path);
+            // Only download if we don't already have the image
+            if (!file_exists(public_path('images/' . $filename))) {
+                Image::make($path)->save(public_path('images/' . $filename));
+            }
+            if (filesize(public_path('images/' . $filename)) === 55) {
+                \File::delete(public_path('images/' . $filename));
+            }
         }
-        if (filesize(public_path('images/' . $filename)) === 55) {
-            \File::delete(public_path('images/' . $filename));
-        }
-    }
-    echo "Update complete";
-});
+        echo "Update complete";
+    });
 
-Route::get('/clear-cache', function () {
-    Artisan::call('route:clear');
-    Artisan::call('config:clear');
-    Artisan::call('cache:clear');
+    Route::get('clear-cache', function () {
+        Artisan::call('route:clear');
+        Artisan::call('config:clear');
+        Artisan::call('cache:clear');
 
-    echo "All Clear";
-    // return what you want
+        echo "All Clear";
+        // return what you want
+    });
 });

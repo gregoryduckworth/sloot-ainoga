@@ -3,31 +3,32 @@
 @section('title', 'Update')
 
 @section('content')
-        <div class="flex-center position-ref full-height">
-
-            <div class="row content">
-                <div class="col-md6">
-                    @if(isset($success))
-                        <div class="alert alert-success">{{ $success }}</div>
-                    @endif
-                    <form action="update-info" method="POST">
-                        @csrf
-                        <label>X Coordinate</label>
-                        <input type="text" name="x"/><br />
-
-                        <label>Y Coordinate</label>
-                        <input type="text" name="y"/><br />
-
-                        <label>Info</label><br />
-                        <textarea name="info" rows="10" cols="20"></textarea><br /><br />
-
-                        <input type="submit" />
-                    </form>
-                    <hr>
-                    <a href="/">Back to Main Page</a>
-                </div>
+    <div class="col-md-6 col-sm-12 mx-auto mh-100" style="padding-top: 20px;">
+        @if(isset($success))
+            <div class="alert alert-success">{{ $success }}</div>
+        @endif
+        <form action="update-info" method="POST">
+            @csrf
+            <div class="form-group row">
+                <label>X Coordinate</label>
+                <input class="form-control" type="text" name="x"/>
             </div>
-        </div>
+
+            <div class="form-group row">
+                <label>Y Coordinate</label>
+                <input class="form-control" type="text" name="y"/>
+            </div>
+
+            <div class="form-group row">
+                <label>Info</label><br />
+                <textarea class="form-control" name="info" rows="10" cols="20"></textarea>
+            </div>
+
+            <div class="form-group row">
+                <input class="mx-auto btn btn-secondary" type="submit">
+            </div>
+        </form>
+    </div>
 @endsection
 
 @section('javascript')
