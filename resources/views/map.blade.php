@@ -11,7 +11,7 @@
 @section('title', 'Map')
 
 @section('content')
-    <div class="col-md-6 col-sm-12 mx-auto mh-100" style="white-space:nowrap;">
+    <div class="col-lg-8 col-md-8 col-sm-12 mx-auto mh-100" style="white-space:nowrap;">
         <div class="text-center">
         @spaceless
             <?php $counter = 0;?>
@@ -33,20 +33,20 @@
         @endspaceless
         </div>
     </div>
-    <div class="col-md-6 col-sm-12 mx-auto mh-100">
+    <div class="col-lg-4 col-md-4 col-sm-12 mx-auto mh-100">
         <form class="col-md-6" action="/map" method="GET" style="padding-top:20px;">
             <div class="form-group row">
                 <label for="x" class="d-none d-lg-block">X Coordinate</label>
-                <input id="x" class="form-control" placeholder="X Coord" type="text" name="x">
+                <input id="x" class="form-control" placeholder="X Coord" type="text" name="x" value="{{ app('request')->input('x') }}">
             </div>
             <br />
             <div class="form-group row">
                 <label for="y" class="d-none d-lg-block">Y Coordinate</label>
-                <input id="y" class="form-control" placeholder="Y Coord" type="text" name="y">
+                <input id="y" class="form-control" placeholder="Y Coord" type="text" name="y" value="{{ app('request')->input('y') }}">
             </div>
             <br />
             <div class="form-group row">
-                <label for="range" class="d-none d-lg-block">Range (max 12)</label>
+                <label for="range" class="d-none d-lg-block">Range (max 20)</label>
                 <input id="range" class="form-control" placeholder="Range" type="text" name="range" value="{{ app('request')->input('range') }}">
             </div>
             <br />

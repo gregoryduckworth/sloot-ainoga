@@ -44,7 +44,7 @@ Route::get('map', function (Request $request) {
     if (!isset($request->x)) {$request->x = 200;}
     if (!isset($request->y)) {$request->y = 200;}
     if (!isset($request->range)) {$request->range = 5;}
-    if ($request->range >= 12) {$request->range = 12;}
+    if ($request->range >= 20) {$request->range = 20;}
     $coords = DB::table('map')
         ->whereBetween('x', [$request->y - $request->range, $request->y + $request->range])
         ->whereBetween('y', [$request->x - $request->range, $request->x + $request->range])
