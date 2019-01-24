@@ -15,6 +15,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/map">Interactive Map</a>
                     <a class="dropdown-item" href="/upload">Upload Map</a>
+                    <a class="dropdown-item" href="/mines">Mine Locations</a>
                 </div>
             </li>
         </ul>

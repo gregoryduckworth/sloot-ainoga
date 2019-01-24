@@ -11,18 +11,26 @@
             @csrf
             <div class="form-group row">
                 <label>X Coordinate</label>
-                <input class="form-control" type="text" name="x"/>
+                <input class="form-control" type="text" name="y"/>
             </div>
 
             <div class="form-group row">
                 <label>Y Coordinate</label>
-                <input class="form-control" type="text" name="y"/>
+                <input class="form-control" type="text" name="x"/>
             </div>
 
             <div class="form-group row">
                 <label>Info</label><br />
                 <textarea class="form-control" name="info" rows="10" cols="20"></textarea>
             </div>
+
+            <div class="form-group row">
+                <label>Mine</label></div>
+                <select name="mine">
+                    <option value="none">None</option>
+                    <option value="copper">Copper</option>
+                    <option value="tin">Tin</option>
+                </select>
 
             <div class="form-group row">
                 <input class="mx-auto btn btn-secondary" type="submit">

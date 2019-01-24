@@ -20,7 +20,17 @@
                 <a href="/map?x={{ $coord->y }}&y={{ $coord->x }}&range={{ $range }}">
                 @if($coord->image != '')
                     <img src="{{ '/images/' . $coord->image }}" class="img-fluid" style="margin-top:-4px; margin-left: -1px;" data-toggle="tooltip" data-placement="bottom" data-html="true"
-                        title="{{ $coord->y }},{{ $coord->x }} @if(!empty($coord->info)) <br>Additional Info:<br/>{{ $coord->info }} @endif">
+                        title="{{ $coord->y }},{{ $coord->x }}
+                        @if($coord->info || $coord->mine)
+                            <br />Additional Info:<br />
+                            @if($coord->info)
+                                {{ $coord->info }}<br />
+                            @endif
+                            @if($coord->mine)
+                                {{ ucfirst($coord->mine) }} Mine<br />
+                            @endif
+                        @endif
+                        ">
                 @else
                     <img src="/images/unknown.gif" class="img-fluid" style="margin-top:-4px; margin-left: -1px;" data-toggle="tooltip" data-placement="bottom" title="{{ $coord->y }},{{ $coord->x }}">
                 @endif

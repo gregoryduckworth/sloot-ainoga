@@ -10,21 +10,23 @@ class AdminController extends BaseController
 
     public function index()
     {
-        return view('admin');
+        return view('admin.index');
     }
 
     public function updateInfo()
     {
-        return view('update');
+        return view('admin.update');
     }
 
     public function postUpdateInfo(Request $request)
     {
+        if ($request->mine === 'none') {$request->mine = null;}
         \DB::table('map')->where('x', $request->x)->where('y', $request->y)
             ->update([
                 'info' => $request->info,
+                'mine' => $request->mine,
             ]);
-        return view('update')->withSuccess('Information has been updated at ' . $request->x . ',' . $request->y);
+        return view('admin.update')->withSuccess('Information has been updated at ' . $request->y . ',' . $request->x);
     }
 
     public function updateImages()

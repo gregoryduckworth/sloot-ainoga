@@ -51,4 +51,10 @@ class MapController extends BaseController
             'range' => $request->range,
         ]);
     }
+
+    public function mines()
+    {
+        $mines = \DB::table('map')->whereNotNull('mine')->orderBy('mine', 'DESC')->get();
+        return view('mines')->withMines($mines);
+    }
 }
