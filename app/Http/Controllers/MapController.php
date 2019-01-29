@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Map;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -26,7 +27,7 @@ class MapController extends BaseController
         $coords = preg_split('/\r\n|\r|\n/', $request->input('map'));
         foreach ($coords as $coord) {
             $entry = explode(',', $coord);
-            \DB::table('map')->where('x', $entry[0])->where('y', $entry[1])
+            Map::where('x', $entry[0])->where('y', $entry[1])
                 ->update([
                     'image' => substr($entry[2], strrpos($entry[2], '/') + 1),
                 ]);
@@ -41,8 +42,7 @@ class MapController extends BaseController
         if (!isset($request->y)) {$request->y = 200;}
         if (!isset($request->range)) {$request->range = 5;}
         if ($request->range >= 20) {$request->range = 20;}
-        $coords = \DB::table('map')
-            ->whereBetween('x', [$request->y - $request->range, $request->y + $request->range])
+        $coords = Map::whereBetween('x', [$request->y - $request->range, $request->y + $request->range])
             ->whereBetween('y', [$request->x - $request->range, $request->x + $request->range])
             ->orderBy('x')->get();
         return view('map')->with([
@@ -54,7 +54,7 @@ class MapController extends BaseController
 
     public function mines()
     {
-        $mines = \DB::table('map')->whereNotNull('mine')->orderBy('mine', 'DESC')->get();
+        $mines = Map::whereNotNull('mine_id')->orderBy('mine_id', 'DESC')->get();
         return view('mines')->withMines($mines);
     }
 }

@@ -28,8 +28,9 @@
                 <label>Mine</label></div>
                 <select name="mine">
                     <option value="none">None</option>
-                    <option value="copper">Copper</option>
-                    <option value="tin">Tin</option>
+                    @foreach($mines as $mine)
+                        <option value="{{ $mine->id }}">{{ ucfirst($mine->type) }}</option>
+                    @endforeach
                 </select>
 
             <div class="form-group row">

@@ -5,7 +5,7 @@
 @section('content')
     <div class="col mx-auto mh-100" style="padding-top: 20px;">
         @foreach($mines as $mine)
-            <li>{{ $mine->y }}, {{ $mine->x }} - {{ ucfirst($mine->mine) }}</li>
+            <li>{{ $mine->y }}, {{ $mine->x }} - {{ ucfirst($mine->mine->type) }}</li>
         @endforeach
     </div>
 @endsection

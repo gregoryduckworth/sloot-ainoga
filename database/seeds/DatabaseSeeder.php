@@ -11,16 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        for($x = 1; $x < 401; $x++) {
-          for($y = 1; $y < 401; $y++) {
-            DB::table('map')->insert([
-              'x' => $x,
-              'y' => $y,
-              'image' => '',
-              'info' => '',
-            ]);
-            echo $x . ',' . $y . "\r\n";
-          }
-        }
+        $this->call([
+            MapTableSeeder::class,
+            MineTableSeeder::class,
+        ]);
+
     }
 }

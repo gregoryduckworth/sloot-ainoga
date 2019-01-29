@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Map;
+use App\Models\Mine;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -15,18 +17,21 @@ class AdminController extends BaseController
 
     public function updateInfo()
     {
-        return view('admin.update');
+        return view('admin.update')
+            ->withMines(Mine::get());
     }
 
     public function postUpdateInfo(Request $request)
     {
         if ($request->mine === 'none') {$request->mine = null;}
-        \DB::table('map')->where('x', $request->x)->where('y', $request->y)
+        Map::where('x', $request->x)->where('y', $request->y)
             ->update([
                 'info' => $request->info,
-                'mine' => $request->mine,
+                'mine_id' => $request->mine,
             ]);
-        return view('admin.update')->withSuccess('Information has been updated at ' . $request->y . ',' . $request->x);
+        return view('admin.update')
+            ->withSuccess('Information has been updated at ' . $request->y . ',' . $request->x)
+            ->withMines(Mine::get());
     }
 
     public function updateImages()
