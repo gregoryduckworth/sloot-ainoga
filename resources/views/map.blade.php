@@ -29,7 +29,7 @@
         <h2>Map</h2>
         <?php $counter = 0;?>
         <center>
-        <table style="border-spacing: 0px; padding-left:20px; padding-top:20px;">
+        <table style="border-spacing: 0px; padding-bottom:20px; padding-top:20px;">
             <tr>
         @foreach($coords as $coord)
             <?php $counter++;?>
