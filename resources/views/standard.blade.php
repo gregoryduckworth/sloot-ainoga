@@ -24,7 +24,7 @@
         <div id="wrapper">
             <div id="header">
                 <div class="logo"></div>
-                <div class="headerNews">
+                <div class="headerNews" style="overflow: hidden;">
                     <h2>Welcome to Agonia Tools!</h2>
                     <p class="news">
                         <b>This is an unofficial guide for the game Agonia - Tales Of Forgotten Lands</b>
