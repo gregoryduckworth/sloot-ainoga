@@ -4,6 +4,9 @@
         html, body {
             height: 100%;
         }
+        .logo {
+            background-image: url('images/header_logo.png') !important;
+        }
         @yield('style')
     </style>
     <head>
@@ -14,13 +17,30 @@
         <title>Agonia Tools - @yield('title')</title>
 
         <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="https://agonialands.com/assets/titan/style.css">
+        <link rel="stylesheet" href="https://agonialands.com/assets/titan/responsive.css">
     </head>
-    @include('navbar')
     <body>
-        <div class="container-fluid" style="padding-top: 20px;">
-            <div class="row h-100">
-                @yield('content')
+        <div id="wrapper">
+            <div id="header">
+                <div class="logo"></div>
+                <div class="headerNews">
+                    <h2>Welcome to Agonia Tools!</h2>
+                    <p class="news">
+                        <b>This is an unofficial guide for the game Agonia - Tales Of Forgotten Lands</b>
+                    </p>
+                </div>
+            </div>
+            <div id="content">
+                <div id="section1">
+                    @include('navbar')
+                    @yield('form')
+                </div>
+                <div id="section2">
+                    <div class="panel-char" style="width:100%;">
+                        @yield('content')
+                    </div>
+                </div>
             </div>
         </div>
     </body>

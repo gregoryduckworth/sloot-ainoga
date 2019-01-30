@@ -1,23 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Agonia Tools</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Map
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/map">Interactive Map</a>
-                    <a class="dropdown-item" href="/upload">Upload Map</a>
-                    <a class="dropdown-item" href="/mines">Mine Locations</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div class="panel">
+    <ul>
+        <h1>Navigation</h1>
+        <li><a href="/">Main Page</a></li>
+        <li><a href="/map">Interactive Map</a></li>
+        <li><a href="/upload">Upload Map</a></li>
+        <li><a href="/mines">Mines</a></li>
+    </ul>
+</div>

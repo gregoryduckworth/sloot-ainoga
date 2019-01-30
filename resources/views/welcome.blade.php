@@ -3,9 +3,8 @@
 @section('title', 'Welcome')
 
 @section('content')
-    <div class="col">
-        <div class="text-center">
-            Welcome to Agonia Tools!
-        </div>
-    </div>
+  <h2>Welcome to Agonia Tools!
+    <p>
+
+    </p>
 @endsection
