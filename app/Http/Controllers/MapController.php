@@ -54,7 +54,7 @@ class MapController extends BaseController
 
     public function mines()
     {
-        $mines = Map::whereNotNull('mine_id')->orderBy('mine_id', 'ASC')->get();
+        $mines = Map::whereNotNull('mine_id')->join('mines', 'maps.mine_id', 'mines.id')->orderBy('mines.type', 'ASC')->get();
         return view('mines')->withMines($mines);
     }
 }
