@@ -5,5 +5,6 @@
         <li><a href="/map">Interactive Map</a></li>
         <li><a href="/upload">Upload Map</a></li>
         <li><a href="/mines">Mines</a></li>
+        <li><a href="/herbs">Herbs</a></li>
     </ul>
 </div>

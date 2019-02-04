@@ -23,6 +23,7 @@ Route::post('upload', 'MapController@postUpload');
 // Display the map
 Route::get('map', 'MapController@show');
 Route::get('mines', 'MapController@mines');
+Route::get('herbs', 'MapController@herbs');
 
 Route::prefix('admin')->group(function () {
 

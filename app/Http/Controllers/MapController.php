@@ -60,4 +60,9 @@ class MapController extends BaseController
             ->orderBy('maps.y', 'ASC')->get();
         return view('mines')->withMines($mines);
     }
+
+    public function herbs()
+    {
+        return view('herbs');
+    }
 }
