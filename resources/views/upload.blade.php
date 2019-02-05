@@ -17,7 +17,7 @@
                         if(table.rows[i].cells[0].innerHTML === '&amp;nbsp;') { } else {
                             map += table.rows[i].cells[0].innerHTML + ','
                                 + table.rows[0].cells[j].innerHTML + ','
-                                + cell.style.background.replace('url("//','https://').replace('")','')
+                                + cell.style.background.replace('url("//','https://').replace('")','').replace('repeat scroll 0% 0%','').replace('rgba(0, 0, 0, 0)','')
                                 + '\n';
                         }
                     }
