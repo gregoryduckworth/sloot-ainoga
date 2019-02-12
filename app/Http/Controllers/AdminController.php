@@ -34,6 +34,16 @@ class AdminController extends BaseController
             ->withMines(Mine::get());
     }
 
+    public function fullmap()
+    {
+        $coords = Map::orderBy('x')->get();
+        return view('admin.map')->with([
+            'coords' => $coords,
+            'x' => 400,
+            'range' => 200,
+        ]);
+    }
+
     public function updateImages()
     {
         for ($i = 0; $i < 1824; $i++) {

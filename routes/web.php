@@ -30,6 +30,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index');
     Route::get('update-info', 'AdminController@updateInfo');
     Route::post('update-info', 'AdminController@postUpdateInfo');
+    Route::get('fullmap', 'AdminController@fullmap');
 
     // Get image tiles from the server
     Route::get('update-images', 'AdminController@updateImages');
