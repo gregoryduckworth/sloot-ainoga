@@ -13,7 +13,7 @@
             @else
                 <img src="/images/unknown.gif" style="width: 24px; border: 0;">
             @endif
-            @if($counter === ($range * 2) + 1)
+            @if($counter === 400)
                 <?php $counter = 0;?>
             </tr>
             @endif
