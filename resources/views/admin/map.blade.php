@@ -1,9 +1,8 @@
 <style>
-@media (max-width: 720px) {
-        img {
-            margin-left: -2px;
-        }
+    img {
+        margin: -2px;
     }
+}
 </style>
 @spaceless
     <h2>Map</h2>
