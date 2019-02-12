@@ -1,4 +1,10 @@
-
+<style>
+@media (max-width: 720px) {
+        img {
+            margin-left: -2px;
+        }
+    }
+</style>
 @spaceless
     <h2>Map</h2>
     <?php $counter = 0;?>
@@ -9,9 +15,9 @@
         <?php $counter++;?>
         <td>
             @if($coord->image != '')
-                <img src="{{ '/images/' . $coord->image }}" style="width: 24px; border: 0;">
+                <img src="{{ '/images/' . $coord->image }}" style="width: 20px; border: 0;">
             @else
-                <img src="/images/unknown.gif" style="width: 24px; border: 0;">
+                <img src="/images/unknown.gif" style="width: 20px; border: 0;">
             @endif
             @if($counter === 400)
                 <?php $counter = 0;?>
